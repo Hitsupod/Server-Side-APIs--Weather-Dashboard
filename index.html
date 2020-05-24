@@ -6,6 +6,7 @@
   <title>Weather Dashboard</title>
   <!-- Bootstrap CSS CDN  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel='stylesheet' href="styles.css">
 </head>
 
@@ -18,71 +19,86 @@
     <div class="jumbotron" style="background-color: gray ; color: white;">
       <h1 class="text-center">
         <strong>
-          <i class="fa fa-newspaper-o"></i>Weather Dashboard</strong>
+          <i class="weather"></i>Weather Dashboard</strong>
       </h1>
     </div>
 
-    <!-- Side Bar -->
-    <div class='sidebar' id="search">Side Bar</div>
-
+  
     <!-- Row for Searching New York Times -->
-    <div class="row">
-      <div class="col-sm-12">
+    <div class="row" id="searchContainer">
+      <div class="col-sm-3">
         <br>
         <!-- First card is for handling the search parameters -->
         <div class="card">
           <div class="card-header">
-            <strong>
-              <i class="fa fa-list-alt"></i> Search for a City:</strong>
+            <strong>Search for a City:</strong>
           </div>
-          <div class="card-body">
 
-            <!-- Here we create an HTML Form for handling the inputs-->
-            <form role="form">
+        <!-- Search Input -->
+        <div class="card-body">
+              <label for="search">Search</label>
+              <input type="text" class="input" id="searchInput">
 
-              <!-- Here we create the text box for capturing the search term-->
-              <div class="form-group">
-                <label for="search">Search</label>
-                <input type="text" class="form-control" id="search-term">
-              </div>
+        <!-- Search Buttons -->
+        <button type="submit" class="btn btn-default" id="searchbtn">Search</button>
 
-              <!-- Here we have our final submit button -->
-              <button type="submit" class="btn btn-default" id="run-search">
-                <i class="fa fa-search"></i> Search</button>
-              <button class="btn btn-default" id="clear-all">
-                <i class="fa fa-trash"></i> Clear Results</button>
-
-            </form>
-          </div>
+        <!-- Search History -->
+        <div class='searchHistory' id='history'></div>
+        <div class='searchResults'></div>
+      
+      
         </div>
       </div>
     </div>
-
-    <!-- This row will handle all of the retrieved articles -->
-    <div class="row">
-      <div class="col-sm-12">
-        <br>
-
-        <!-- This card will initially be made up of a and wells for each of the articles retrieved -->
-        <div class="card">
-
-          <!-- card Heading for the retrieved articles box -->
-          <div class="card-header">
-            <strong>
-              <i class="fa fa-table"></i> 5 Day Forecast:</strong>
-          </div>
-
-          <!-- This main card will hold each of the resulting articles -->
-          <div class="card-body" id="article-section">
-          </div>
-        </div>
-      </div>
-    </div>
-   
-    
-    
-
   </div>
+
+  <!-- This row will show the current Day  -->
+  <div class="row" id="currentContainer">
+    <div class="col-sm-9">
+      <br>
+      <div class="card">
+        <!-- Output Container -->
+        <div class="img" id="icon"></div>
+        <div class="output" id="location"></div>
+        <p>Temperature:
+          <div class="output" id="temperature"></div>
+        </p>
+        
+        <p>Humidity:
+          <div class="output" id="humidity"></div>
+        </p>
+        
+        <p>Wind Speed:
+          <div class="output" id="windSpeed"></div>
+        </p>
+        </div>
+      </div>
+  </div>
+
+  <!-- This row will show 5 day forcast-->
+  <div class="row" id="forecast">
+    <div class="col-sm-9">
+      <br>
+      <div class="card">
+        <div class="card-header">
+          <strong>5 Day Forecast:</strong>
+        </div>
+
+        <!-- This main card will hold each of the resulting articles -->
+          <!-- <div class="output" id="dayPlace">Day</div>
+          <div class="output" id="temperature">Temp</div>
+          <div class="output" id="humidity">Humidity</div>
+          <div class="output" id="windSpeed">WindSpeed</div>
+          <div class="output" id="uvIndex">UV Index</div> -->
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+     
 
   <!-- jQuery JS -->
   <script src="https://code.jquery.com/jquery.js"></script>
