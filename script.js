@@ -14,12 +14,7 @@ searchbtn.addEventListener('click', function () {
 }, false);
 
 
-// Location 
-/*currentPosition(setPosition);
-setPosition(position)
-    position.coords.latitude
-    position.coords.longitude 
-*/
+
 // Ajax Call
 $("#searchbtn").on("click", function(event) {
     event.preventDefault();
