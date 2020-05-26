@@ -23,7 +23,7 @@ $("#searchbtn").on("click", function(event) {
     var city = $("#searchInput").val();
     var key = 'e664809273a9e730273447cbf35d1018';
 
-// Using Ajax to call for current weather 
+// Using Ajax to call for current weather  
     $.ajax({
         url: 'https://api.openweathermap.org/data/2.5/weather',
         dataType: 'json',
@@ -48,9 +48,29 @@ $("#searchbtn").on("click", function(event) {
         $('#icon').html(icon);
         
     });
+
+    // Using Ajax to call for forecast 
+    $.ajax({
+        url: 'https://api.openweathermap.org/data/2.5/forecast/daily',
+        dataType: 'json',
+        method: "GET",
+        data: {q:city, appid: key, units: 'metric'}
+    })
+
+    .then(function(data) {
+        var dayData = '';
+        $.each(data.weather, function(index, val) {
+            var dayData = data.main.temp;
+        })    
+
+        $('#forecastDay').html(dataObj);
+        
+    });
+    
+
 // Testing Fetch 
 
-function weatherData() {
+/*function weatherData() {
     let headers = new Headers
     return fetch({
         url: 'https://api.openweathermap.org/data/2.5/forecast',
@@ -61,30 +81,13 @@ function weatherData() {
     }).then(response => {
         return response.json();
     });
-}
+}*/
+fetch ('https://api.openweathermap.org/data/2.5/forecast?q=London,uk&appid=e664809273a9e730273447cbf35d1018&unit=metric')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    $('#forecastDay').html(data);
 
 
-
-// Using Ajax to call for forecast 
-    $.ajax({
-        url: 'https://api.openweathermap.org/data/2.5/forecast/daily',
-        dataType: 'json',
-        method: "GET",
-        data: {q:city, appid: key, units: 'metric'}
-    })
-
-    .then(function(data) {
-        var dataObj = JSON.stringify(this.data);
-        console.log(dataObj);
-        var dayData = '';
-        $.each(data.list, function(index, val) {
-            var dayData = data.sys;
-        })    
-
-        $('#forecastDay').html(dataObj);
-        
-    });
-    
 });
 
 
