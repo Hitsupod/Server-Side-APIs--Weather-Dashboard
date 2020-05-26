@@ -23,7 +23,7 @@ $("#searchbtn").on("click", function(event) {
     var city = $("#searchInput").val();
     var key = 'e664809273a9e730273447cbf35d1018';
 
-// Using Ajax to call
+// Using Ajax to call for current weather 
     $.ajax({
         url: 'https://api.openweathermap.org/data/2.5/weather',
         dataType: 'json',
@@ -48,6 +48,43 @@ $("#searchbtn").on("click", function(event) {
         $('#icon').html(icon);
         
     });
+// Testing Fetch 
+
+function weatherData() {
+    let headers = new Headers
+    return fetch({
+        url: 'https://api.openweathermap.org/data/2.5/forecast',
+        dataType:'json',
+        method: 'GET',
+        header: headers,
+        data: {q:city, appid: key, units:'metric'},
+    }).then(response => {
+        return response.json();
+    });
+}
+
+
+
+// Using Ajax to call for forecast 
+    $.ajax({
+        url: 'https://api.openweathermap.org/data/2.5/forecast/daily',
+        dataType: 'json',
+        method: "GET",
+        data: {q:city, appid: key, units: 'metric'}
+    })
+
+    .then(function(data) {
+        var dataObj = JSON.stringify(this.data);
+        console.log(dataObj);
+        var dayData = '';
+        $.each(data.list, function(index, val) {
+            var dayData = data.sys;
+        })    
+
+        $('#forecastDay').html(dataObj);
+        
+    });
+    
 });
 
 
