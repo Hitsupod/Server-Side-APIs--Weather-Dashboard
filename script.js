@@ -41,16 +41,66 @@ $("#searchbtn").on("click", function(event) {
         $('#windSpeed').html(windSpeedData);
     })
 // Using Ajax to call for forecast 
-   /$.ajax({
+  /* $.ajax({
         url: forecastURL,
         dataType: 'json',
         method: "GET",
         data: {q:city, appid: apikey, units: 'metric'},
     })
+
+// Potential For Loop 
     .then(function(response){
-        var day1 = response.list[0].sys.dt_txt;
+        // Day 1 Outputs 
+        var day1 = response.list[3].sys.dt_txt;
+        var temp1 = response.list[3].main.temp;
+        var humdity1 = response.list[3].main.humdity;
+        var windspeed1 = response.list[3].wind.speed;
         $('#forecastDay1').html(day1);
-    }
+        $('#forecastTemperature1').html(temp1);
+        $('#forecastHumidity1').html(humdity1);
+        $('#forecastWindSpeed1').html(windspeed1);
+
+        //Day 2 Outputs 
+        var day2 = response.list[11].sys.dt_txt;
+        var temp2 = response.list[11].main.temp;
+        var humdity2 = response.list[11].main.humdity;
+        var windspeed2 = response.list[11].wind.speed;
+        $('#forecastDay2').html(day1);
+        $('#forecastTemperature2').html(temp2);
+        $('#forecastHumidity2').html(humdity2);
+        $('#forecastWindSpeed2').html(windspeed2);
+
+        // Day 3 Outputs
+        var day3 = response.list[0].sys.dt_txt;
+        var temp3 = response.list[0].main.temp;
+        var humdity3 = response.list[0].main.humdity;
+        var windspeed3 = response.list[0].wind.speed;
+        $('#forecastDay3').html(day3);
+        $('#forecastTemperature3').html(temp3);
+        $('#forecastHumidity3').html(humdity3);
+        $('#forecastWindSpeed3').html(windspeed3);
+
+        // Day 4 Outputs
+        var day4 = response.list[0].sys.dt_txt;
+        var temp4 = response.list[0].main.temp;
+        var humdity4 = response.list[0].main.humdity;
+        var windspeed4 = response.list[0].wind.speed;
+        $('#forecastDay4').html(day4);
+        $('#forecastTemperature4').html(temp4);
+        $('#forecastHumidity4').html(humdity4);
+        $('#forecastWindSpeed4').html(windspeed4);
+
+        // Day 5 Outputs
+        var day5 = response.list[0].sys.dt_txt;
+        var temp5 = response.list[0].main.temp;
+        var humdity5 = response.list[0].main.humdity;
+        var windspeed5 = response.list[0].wind.speed;
+        $('#forecastDay5').html(day5);
+        $('#forecastTemperature5').html(temp5);
+        $('#forecastHumidity5').html(humdity5);
+        $('#forecastWindSpeed5').html(windspeed5);
+
+    }*/
 });
 
 // Testing Fetch 
